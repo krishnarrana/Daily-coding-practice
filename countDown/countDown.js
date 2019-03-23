@@ -1,10 +1,11 @@
-function countDown(time) {
-  const setTimeoutId = setInterval(() => {
-    console.log(time);
-    time = time - 1;
-    if (time < 0) {
+function countDown(seconds) {
+  const intervalId = setInterval(() => {
+    seconds--;
+    if (seconds > 0) {
+      console.log("Timer : ", seconds);
+    } else {
       console.log("Ring Ring Ring");
-      clearInterval(setTimeoutId);
+      clearInterval(intervalId);
     }
   }, 1000);
 }
