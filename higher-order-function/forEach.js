@@ -91,35 +91,18 @@ console.log(
       vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
   */
 function vowelCount(str) {
-  let vowelsCount = {};
-  forEach(str.toLowerCase(), letter => {
-    if (letter === "a") {
-      console.log(letter);
-      !!vowelsCount.a
-        ? (vowelsCount.a = vowelsCount.a + 1)
-        : (vowelsCount.a = 1);
-    } else if (letter === "e") {
-      console.log(letter);
-      !!vowelsCount.e
-        ? (vowelsCount.e = vowelsCount.e + 1)
-        : (vowelsCount.e = 1);
-    } else if (letter === "i") {
-      console.log(letter);
-      !!vowelsCount.i
-        ? (vowelsCount.i = vowelsCount.i + 1)
-        : (vowelsCount.i = 1);
-    } else if (letter === "o") {
-      console.log(letter);
-      !!vowelsCount.o
-        ? (vowelsCount.o = vowelsCount.o + 1)
-        : (vowelsCount.o = 1);
-    } else if (letter === "u") {
-      console.log(letter);
-      !!vowelsCount.u
-        ? (vowelsCount.u = vowelsCount.u + 1)
-        : (vowelsCount.u = 1);
+  var splitArr = str.toLowerCase().split("");
+  var obj = {};
+  var vowels = "aeiou";
+  forEach(splitArr, letter => {
+    if (vowels.indexOf(letter) !== -1) {
+      if (obj[letter]) {
+        obj[letter]++;
+      } else {
+        obj[letter] = 1;
+      }
     }
   });
-  return vowelsCount;
+  return obj;
 }
 console.log(vowelCount("I Am awesome and so are you"));
