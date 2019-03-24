@@ -1,0 +1,125 @@
+function forEach(arr, cb) {
+  for (let i = 0; i < arr.length; i++) {
+    cb(arr[i], i, arr);
+  }
+}
+
+forEach([1, 2, 3, 4, 5], function(a) {
+  console.log(a * 3);
+});
+/*
+Write a function called doubleValues which accepts an array and returns a new array with all the values in the array passed to the function doubled
+
+Examples:
+    doubleValues([1,2,3]) // [2,4,6]
+    doubleValues([5,1,2,3,10]) // [10,2,4,6,20]
+
+*/
+function doubleValues(arr) {
+  let doubleArr = [];
+  forEach(arr, number => {
+    doubleArr.push(number * 2);
+  });
+  return doubleArr;
+}
+
+/*
+  Write a function called onlyEvenValues which accepts an array and returns a new array with only the even values in the array passed to the function
+  
+  Examples:
+      onlyEvenValues([1,2,3]) // [2]
+      onlyEvenValues([5,1,2,3,10]) // [2,10]
+  
+  */
+function onlyEvenValues(arr) {
+  let evenArr = [];
+  forEach(arr, number => {
+    if (number % 2 === 0) {
+      evenArr.push(number);
+    }
+  });
+  return evenArr;
+}
+console.log(onlyEvenValues([0, 20, 2, 3, 10]));
+
+/*
+  Write a function called showFirstAndLast which accepts an array of strings and returns a new array with only the first and last character of each string.
+  
+  Examples:
+      showFirstAndLast(['colt','matt', 'tim', 'udemy']) // ["ct", "mt", "tm", "uy"]
+      showFirstAndLast(['hi', 'goodbye', 'smile']) // ['hi', 'ge', 'se']
+  
+  */
+function showFirstAndLast(arr) {
+  let newArr = [];
+  forEach(arr, str => {
+    newArr.push(str[0] + str[str.length - 1]);
+  });
+  return newArr;
+}
+console.log(showFirstAndLast(["colt", "matt", "tim", "udemy"]));
+/*
+  Write a function called addKeyAndValue which accepts an array of objects, a key, and a value and returns the array passed to the function with the new key and value added for each object 
+  
+  Examples:
+      addKeyAndValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'title', 'instructor') 
+      
+      // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
+  
+  */
+function addKeyAndValue(arr, key, value) {
+  forEach(arr, obj => {
+    obj[key] = value;
+  });
+  return arr;
+}
+console.log(
+  addKeyAndValue(
+    [{ name: "Elie" }, { name: "Tim" }, { name: "Matt" }, { name: "Colt" }],
+    "title",
+    "instructor"
+  )
+);
+/*
+  Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
+  
+  Examples:
+      vowelCount('Elie') // {e:2,i:1};
+      vowelCount('Tim') // {i:1};
+      vowelCount('Matt') // {a:1})
+      vowelCount('hmmm') // {};
+      vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
+  */
+function vowelCount(str) {
+  let vowelsCount = {};
+  forEach(str.toLowerCase(), letter => {
+    if (letter === "a") {
+      console.log(letter);
+      !!vowelsCount.a
+        ? (vowelsCount.a = vowelsCount.a + 1)
+        : (vowelsCount.a = 1);
+    } else if (letter === "e") {
+      console.log(letter);
+      !!vowelsCount.e
+        ? (vowelsCount.e = vowelsCount.e + 1)
+        : (vowelsCount.e = 1);
+    } else if (letter === "i") {
+      console.log(letter);
+      !!vowelsCount.i
+        ? (vowelsCount.i = vowelsCount.i + 1)
+        : (vowelsCount.i = 1);
+    } else if (letter === "o") {
+      console.log(letter);
+      !!vowelsCount.o
+        ? (vowelsCount.o = vowelsCount.o + 1)
+        : (vowelsCount.o = 1);
+    } else if (letter === "u") {
+      console.log(letter);
+      !!vowelsCount.u
+        ? (vowelsCount.u = vowelsCount.u + 1)
+        : (vowelsCount.u = 1);
+    }
+  });
+  return vowelsCount;
+}
+console.log(vowelCount("I Am awesome and so are you"));
